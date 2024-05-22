@@ -1,0 +1,24 @@
+name: xiaoyishi_web
+description: "校易市官网"
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: 4.6.6
+  dio: ^5.4.1
+  flutter_screenutil: ^5.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
