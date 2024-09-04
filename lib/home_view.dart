@@ -9,7 +9,7 @@ import 'I18n.dart';
 class HomeView extends GetView<Controller> {
   const HomeView({super.key});
   Widget _navItem(title, index) {
-    bool isCheck = controller.checkIndex == index;
+    bool isCheck = (controller.checkIndex.value ?? -1) == index;
     return InkWell(
       onTap: () {
         controller.changeCheckIndex(index);
@@ -43,7 +43,7 @@ class HomeView extends GetView<Controller> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 61,
+                  height: 61.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -68,8 +68,8 @@ class HomeView extends GetView<Controller> {
                         ],
                       ),
                       Row(
-                        children:
-                            List.generate(controller.navList.length, (index) {
+                        children: List.generate(controller.navList.length ?? 0,
+                            (index) {
                           return _navItem(controller.navList[index], index);
                         }),
                       )
@@ -83,54 +83,90 @@ class HomeView extends GetView<Controller> {
                       Expanded(
                         child: Column(
                           children: [
-                            Image.asset('assets/images/phone.png',fit: BoxFit.cover,),
+                            Image.asset(
+                              'assets/images/phone.png',
+                              fit: BoxFit.cover,
+                            ),
                           ],
                         ),
                       ),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              I18n.SecGood.tr,
-                              style: TextStyle(
-                                  color: controller.btnColor, fontSize: 48.sp),
-                            ),
-                            SizedBox(height: 40.h,),
-                            Text(
-                              I18n.Publicity.tr,
-                              softWrap: true,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18.sp,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                I18n.SecGood.tr,
+                                style: TextStyle(
+                                    color: controller.btnColor,
+                                    fontSize: 48.sp),
                               ),
-                            ),
-                            SizedBox(height: 46.h,),
-                            SizedBox(
-                              width: 455.w,
-                              height: 85.h,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        controller.btnColor)),
-                                child: Text(
-                                  I18n.FindSecGood.tr,
-                                  style: TextStyle(color: Colors.white,fontSize: 24.sp),
+                              SizedBox(
+                                height: 40.h,
+                              ),
+                              Text(
+                                I18n.Publicity.tr,
+                                softWrap: true,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.sp,
                                 ),
                               ),
-                            ),
-                            SizedBox(height: 119.h,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset('assets/images/lianshu.png',width: 40.w,height: 40.w,fit: BoxFit.cover,),
-                                Image.asset('assets/images/instagram.png',width: 40.w,height: 40.w,fit: BoxFit.cover,),
-                                Image.asset('assets/images/twitter-circle-fill.png',width: 40.w,height: 40.w,fit: BoxFit.cover,),
-                                Image.asset('assets/images/weixin.png',width: 40.w,height: 40.w,fit: BoxFit.cover,)
-                              ],
-                            )
-                          ],
+                              SizedBox(
+                                height: 46.h,
+                              ),
+                              SizedBox(
+                                width: 455.w,
+                                height: 85.h,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              controller.btnColor)),
+                                  child: Text(
+                                    I18n.FindSecGood.tr,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 24.sp),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 119.h,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/lianshu.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Image.asset(
+                                    'assets/images/instagram.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Image.asset(
+                                    'assets/images/twitter-circle-fill.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Image.asset(
+                                    'assets/images/weixin.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                    fit: BoxFit.cover,
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       )
                     ],

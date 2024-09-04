@@ -12,7 +12,7 @@ class Controller extends GetxController{
   List navList = [
     I18n.Home.tr,
     I18n.About_Us.tr,
-    I18n.Contact_Us.tr,
+    // I18n.Contact_Us.tr,
     I18n.Help.tr,
     I18n.Download.tr,
   ];
